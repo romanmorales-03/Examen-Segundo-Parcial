@@ -1,0 +1,110 @@
+body {
+    margin: 0 50px;
+}
+
+header {
+  width: 100%;
+  padding-top: 30%;
+  background-image: url('encabezado.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+}
+
+
+nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #333;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.grupo {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="button"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+.galeria img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    background-color: black;
+}
+
+@media screen and (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .contenedor {
+        margin: 20px auto;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1000px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
