@@ -1,12 +1,10 @@
-// Inicializa usuarios en localStorage si no existe
-if (!localStorage.getItem("datos")) {
+
   const lista = [
     { username: "admin", password: "admin.123", nivel: 1 },
     { username: "supervisor", password: "super.123", nivel: 2 },
     { username: "captura", password: "cap.123", nivel: 3 }
   ];
-  localStorage.setItem("datos", JSON.stringify(lista));
-}
+  localStorage.setItem("usuarios", JSON.stringify(lista));
 
 // Función para validar login
 function logo() {
