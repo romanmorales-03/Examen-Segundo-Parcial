@@ -1,3 +1,4 @@
+// Solo guardar usuarios si no existen ya
 if (!localStorage.getItem("usuarios")) {
   const lista = [
     { username: "admin", password: "admin.123", nivel: 1 },
@@ -7,12 +8,8 @@ if (!localStorage.getItem("usuarios")) {
   localStorage.setItem("usuarios", JSON.stringify(lista));
 }
 
-
-// Función para validar login
 function logo() {
-  // Obtén la lista actualizada de usuarios para evitar desincronización
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value.trim();
 
@@ -26,30 +23,19 @@ function logo() {
   );
 
   if (!validUser) {
-    alert('¡Usuario y/o contraseña incorrectos!');
+    alert("¡Usuario y/o contraseña incorrectos!");
     return;
   }
 
-  switch (validUser.nivel) {
-    case 1:
-      alert("Usuario admin válido. Redirigiendo a admin.html...");
-      // window.location.href = "admin.html";
-      break;
-    case 2:
-      alert("Usuario supervisor válido. Redirigiendo a supervisor.html...");
-      // window.location.href = "supervisor.html";
-      break;
-    case 3:
-      alert("Usuario captura válido. Redirigiendo a captura.html...");
-      // window.location.href = "captura.html";
-      break;
-  }
+  alert(`Bienvenido ${validUser.username} (nivel ${validUser.nivel})`);
+  // Aquí iría la redirección según el nivel
+  // window.location.href = "admin.html";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('loginform').addEventListener('submit', e => {
+  const form = document.getElementById('loginform');
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     logo();
   });
 });
-
