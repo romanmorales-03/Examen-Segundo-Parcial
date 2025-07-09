@@ -9,7 +9,7 @@
 // Función para validar login
 function logo() {
   // Obtén la lista actualizada de usuarios para evitar desincronización
-  let usuarios = JSON.parse(localStorage.getItem("datos")) || [];
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value.trim();
@@ -44,10 +44,9 @@ function logo() {
   }
 }
 
-// Añadimos el evento submit al formulario cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('loginform').addEventListener('submit', e => {
-    e.preventDefault(); // evita que el formulario se envíe y recargue
+    e.preventDefault();
     logo();
   });
 });
