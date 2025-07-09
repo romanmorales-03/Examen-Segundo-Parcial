@@ -1,3 +1,4 @@
+// Inicializa usuarios en localStorage si no existe
 if (!localStorage.getItem("datos")) {
   const lista = [
     { username: "admin", password: "admin.123", nivel: 1 },
@@ -7,9 +8,11 @@ if (!localStorage.getItem("datos")) {
   localStorage.setItem("datos", JSON.stringify(lista));
 }
 
-let usuarios = JSON.parse(localStorage.getItem("datos"));
-
+// Función para validar login
 function logo() {
+  // Obtén la lista actualizada de usuarios para evitar desincronización
+  let usuarios = JSON.parse(localStorage.getItem("datos")) || [];
+
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value.trim();
 
@@ -43,9 +46,11 @@ function logo() {
   }
 }
 
+// Añadimos el evento submit al formulario cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('loginform').addEventListener('submit', e => {
-    e.preventDefault();
+    e.preventDefault(); // evita que el formulario se envíe y recargue
     logo();
   });
 });
+
