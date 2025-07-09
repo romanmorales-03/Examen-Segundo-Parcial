@@ -1,10 +1,12 @@
-
+if (!localStorage.getItem("usuarios")) {
   const lista = [
     { username: "admin", password: "admin.123", nivel: 1 },
     { username: "supervisor", password: "super.123", nivel: 2 },
     { username: "captura", password: "cap.123", nivel: 3 }
   ];
   localStorage.setItem("usuarios", JSON.stringify(lista));
+}
+
 
 // Función para validar login
 function logo() {
