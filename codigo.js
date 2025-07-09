@@ -1,4 +1,3 @@
-// Inicializa usuarios en localStorage si no existe
 if (!localStorage.getItem("datos")) {
   const lista = [
     { username: "admin", password: "admin.123", nivel: 1 },
@@ -8,7 +7,6 @@ if (!localStorage.getItem("datos")) {
   localStorage.setItem("datos", JSON.stringify(lista));
 }
 
-// Obtiene usuarios desde localStorage
 let usuarios = JSON.parse(localStorage.getItem("datos"));
 
 function logo() {
@@ -19,9 +17,6 @@ function logo() {
     alert("Por favor, complete ambos campos.");
     return;
   }
-
-  console.log("Ingresado:", username, password);
-  console.log("Usuarios disponibles:", usuarios);
 
   const validUser = usuarios.find(
     user => user.username === username && user.password === password
@@ -34,16 +29,23 @@ function logo() {
 
   switch (validUser.nivel) {
     case 1:
-      window.location.href = "admin.html";
+      alert("Usuario admin válido. Redirigiendo a admin.html...");
+      // window.location.href = "admin.html";
       break;
     case 2:
-      window.location.href = "supervisor.html";
+      alert("Usuario supervisor válido. Redirigiendo a supervisor.html...");
+      // window.location.href = "supervisor.html";
       break;
     case 3:
-      window.location.href = "captura.html";
+      alert("Usuario captura válido. Redirigiendo a captura.html...");
+      // window.location.href = "captura.html";
       break;
-    default:
-      alert("Nivel de usuario desconocido.");
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('loginform').addEventListener('submit', e => {
+    e.preventDefault();
+    logo();
+  });
+});
